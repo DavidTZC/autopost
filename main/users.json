@@ -62,5 +62,13 @@
         "email": "1805145820@qq.com",
         "notice": "true",
         "enable": "true"
+    },
+    {
+        "name": "dmy",
+        "stucode": "2020211871",
+        "password": "dmy18726739738",
+        "email": "2715637869@qq.com",
+        "notice": "true",
+        "enable": "true"
     }
 ]
