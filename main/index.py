@@ -6,7 +6,6 @@ import sys
 import main
 import time
 import sign
-from mail import wechat
 from shutil import rmtree as remove
 print("开始 " + time.strftime("%Y/%m/%d") + " 的打卡任务\n")
 files = open(os.getcwd() + "/main/day.txt", 'r+')
@@ -15,29 +14,14 @@ if files.read() == time.strftime("%Y/%m/%d"):
     if os.path.exists(os.getcwd() + "/main/__pycache__/"):
         remove(os.getcwd() + "/main/__pycache__/")
     sys.exit()
+def wechat(text, desp):
+    return requests.get(
+        "https://sc.ftqq.com/SCU164225T52e7796539ad296f29e329de86a417f46046e3310caaf.send?text=" + text + "&desp=" + desp).json()
+    
 try:
     wechat("开始 " + time.strftime("%Y/%m/%d") + " 自动打卡任务","[点我查看运行状况](https://github.com/xsk666/autopost/actions)")
 except RuntimeError:
     print("推送微信通知出错")
-
-
-def other(x, y):
-    for i in range(x, y):
-        print("开始为 " + str(i) + " 打卡...")
-        info = {
-            "stucode": str(i),
-            "password": str(i),
-            "notice": "false",
-        }
-        f = open(os.getcwd() + "/main/ua.txt", 'r', encoding='utf-8')
-        a = f.read().split("\n")
-        UA = a[random.randint(0, len(a) - 1)]
-        f.close()
-        try:
-            cook = sign.login(info, UA)
-            main.run(info, UA, cook)
-        except Exception:
-            print("---为 " + str(i) + " 打卡失败\n")
 
 
 # 读取用户列表
