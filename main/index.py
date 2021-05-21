@@ -5,6 +5,7 @@ import os
 import main
 import time
 import sign
+import requests
 from shutil import rmtree as remove
 print("开始 " + time.strftime("%Y/%m/%d") + " 的打卡任务\n")
 files = open(os.getcwd() + "/main/day.txt", 'r+')
