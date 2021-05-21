@@ -2,7 +2,6 @@
 import json
 import random
 import os
-import sys
 import main
 import time
 import sign
@@ -13,7 +12,7 @@ if files.read() == time.strftime("%Y/%m/%d"):
     print("今日已打卡")
     if os.path.exists(os.getcwd() + "/main/__pycache__/"):
         remove(os.getcwd() + "/main/__pycache__/")
-    sys.exit()
+
 def wechat(text, desp):
     return requests.get(
         "https://sc.ftqq.com/SCU164225T52e7796539ad296f29e329de86a417f46046e3310caaf.send?text=" + text + "&desp=" + desp).json()
